@@ -31,4 +31,14 @@ startBtn.addEventListener('click',()=>{equationDisplay.textContent=formatSide(ba
 applyBtn.addEventListener('click',()=>{if(started){applied=copy(draft);render()}});
 backBtn.addEventListener('click',()=>{draft=copy(base);applied=copy(base);out.hidden=true;out.textContent='';render()});
 document.getElementById('reset').addEventListener('click',()=>{base=copy(initial);draft=copy(initial);applied=copy(initial);started=false;solution=null;out.hidden=true;out.textContent='';equationDisplay.textContent='';equationDisplay.hidden=true;render()});render();
-</script></body></html>
+</script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js')
+      .then(reg => console.log('Service Worker registriert', reg))
+      .catch(err => console.error('Service Worker Fehler', err));
+  });
+}
+</script>
+</body></html>
